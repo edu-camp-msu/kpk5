@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบประกาศผลและยืนยันสิทธิ์ พี่ค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+            min-height: 100vh;
+        }
+        
+        .header-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #64748b, #475569);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #475569, #334155);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(100, 116, 139, 0.3);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .input-field:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .payment-info-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+        }
+        
+        .upload-zone {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 3px dashed rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .upload-zone:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+        }
+        
+        .upload-zone.dragover {
+            border-color: #1d4ed8;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            transform: scale(1.02);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        .loading-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .success-message {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+        
+        .error-message {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.1));
+            border: 2px solid rgba(5, 150, 105, 0.3);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.1);
+        }
+        
+        .reject-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.1));
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.1);
+        }
+        
+        .image-preview {
+            max-width: 250px;
+            max-height: 250px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 3px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .payment-option {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+        }
+        
+        .payment-option.selected {
+            border-color: #1d4ed8;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+        
+        .bank-info {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-gradient py-8 mb-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl md:text-4xl font-bold text-white text-center">
+                <i class="fas fa-graduation-cap mr-3 text-yellow-300"></i>
+                ระบบประกาศผลและยืนยันสิทธิ์ พี่ค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5
+            </h1>
+            <p class="text-blue-100 text-center mt-3 text-lg">มหาวิทยาลัยมหาสารคาม</p>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 pb-8">
+        <!-- ระบบประกาศผล -->
+        <div id="searchSection" class="glass-card rounded-2xl p-6 md:p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-search text-blue-600 mr-3"></i>
+                ระบบประกาศผลพี่ค่าย
+            </h2>
+            
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-2">
+                    <i class="fas fa-id-card text-blue-600 mr-2"></i>
+                    รหัสนิสิต (11 หลัก)
+                </label>
+                <input type="text" id="studentId" maxlength="11" 
+                       class="input-field w-full px-4 py-3 rounded-xl focus:outline-none"
+                       placeholder="กรอกรหัสนิสิต 11 หลัก">
+            </div>
+            
+            <button onclick="searchResult()" 
+                    class="btn-primary text-white px-8 py-3 rounded-xl font-medium w-full md:w-auto">
+                <i class="fas fa-search mr-2"></i>
+                ค้นหาผลการคัดเลือก
+            </button>
+            
+            <!-- ผลการค้นหา -->
+            <div id="searchResult" class="mt-6 hidden"></div>
+        </div>
+
+        <!-- ฟอร์มยืนยันสิทธิ์ -->
+        <div id="confirmForm" class="glass-card rounded-2xl p-6 md:p-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-user-check text-blue-600 mr-3"></i>
+                ฟอร์มยืนยันสิทธิ์
+            </h2>
+            
+            <form id="uploadForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-user text-blue-600 mr-2"></i>
+                            ชื่อ-สกุล
+                        </label>
+                        <input type="text" id="fullName" required
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-id-card text-blue-600 mr-2"></i>
+                            รหัสนิสิต
+                        </label>
+                        <input type="text" id="studentIdForm" required
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-book text-blue-600 mr-2"></i>
+                            สาขาวิชา
+                        </label>
+                        <select id="major" required
+                                class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                            <option value="">เลือกสาขาวิชา</option>
+                            <option value="ภาษาไทย">ภาษาไทย</option>
+                            <option value="สังคมศึกษา">สังคมศึกษา</option>
+                            <option value="วิทยาศาสตร์ทั่วไป">วิทยาศาสตร์ทั่วไป</option>
+                            <option value="ภาษาอังกฤษ">ภาษาอังกฤษ</option>
+                            <option value="คณิตศาสตร์">คณิตศาสตร์</option>
+                            <option value="การศึกษาปฐมวัย">การศึกษาปฐมวัย</option>
+                            <option value="เทคโนโลยีการศึกษาและคอมพิวเตอร์ศึกษา">เทคโนโลยีการศึกษาและคอมพิวเตอร์ศึกษา</option>
+                            <option value="พลศึกษาและการกีฬา">พลศึกษาและการกีฬา</option>
+                            <option value="จิตวิทยา">จิตวิทยา</option>
+                            <option value="วิทยาศาสตร์การกีฬา">วิทยาศาสตร์การกีฬา</option>
+                            <option value="ฟิสิกส์">ฟิสิกส์</option>
+                            <option value="ดนตรีศึกษา">ดนตรีศึกษา</option>
+                            <option value="สิ่งแวดล้อมศึกษา">สิ่งแวดล้อมศึกษา</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                            ชั้นปี
+                        </label>
+                        <select id="year" required
+                                class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                            <option value="">เลือกชั้นปี</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-envelope text-blue-600 mr-2"></i>
+                            อีเมล
+                        </label>
+                        <input type="email" id="email" required
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-phone text-blue-600 mr-2"></i>
+                            เบอร์โทรศัพท์
+                        </label>
+                        <input type="tel" id="phone" required
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                            Facebook
+
+
+                        </label>
+                        <input type="url" id="facebook" required
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none"
+                               placeholder="https://facebook.com/...">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">
+                            <i class="fas fa-smile text-blue-600 mr-2"></i>
+                            ชื่อเล่น (ไม่เกิน 3 พยางค์)
+                        </label>
+                        <input type="text" id="nickname" required maxlength="20"
+                               class="input-field w-full px-4 py-3 rounded-xl focus:outline-none">
+                    </div>
+                </div>
+                
+                <!-- ข้อมูลการชำระเงิน -->
+                <div class="payment-info-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-credit-card text-blue-600 mr-3"></i>
+                        ข้อมูลการชำระเงิน
+                    </h3>
+                    
+                    <!-- ข้อมูลธนาคาร -->
+                    <div class="bank-info rounded-xl p-6 mb-6">
+                        <h4 class="text-lg font-bold mb-4 flex items-center">
+                            <i class="fas fa-university mr-2"></i>
+                            รายละเอียดบัญชีธนาคาร
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div class="flex items-center">
+                                <i class="fas fa-building mr-2 text-blue-200"></i>
+                                <div>
+                                    <p class="font-medium">ธนาคาร</p>
+                                    <p>กสิกรไทย</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-hashtag mr-2 text-blue-200"></i>
+                                <div>
+                                    <p class="font-medium">เลขที่บัญชี</p>
+                                    <p class="font-mono text-lg">062-2-60574-0</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-user mr-2 text-blue-200"></i>
+                                <div>
+                                    <p class="font-medium">ชื่อบัญชี</p>
+                                    <p>นางสาวนนทิยา มูลภักดิ์</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- เลือกวิธีการชำระเงิน -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-4">
+                            <i class="fas fa-money-bill-wave text-blue-600 mr-2"></i>
+                            เลือกวิธีการชำระเงิน
+                        </label>
+                        
+                        <div class="space-y-4">
+                            <div class="payment-option rounded-xl p-4 cursor-pointer" onclick="selectPaymentOption('full', this)">
+                                <div class="flex items-center">
+                                    <input type="radio" name="paymentType" value="ชำระเต็มจำนวน" id="paymentFull" class="mr-3 text-blue-600">
+                                    <div class="flex-1">
+                                        <label for="paymentFull" class="cursor-pointer">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h5 class="font-bold text-gray-800">ชำระเต็มจำนวน</h5>
+                                                    <p class="text-gray-600 text-sm">ชำระครั้งเดียว</p>
+                                                </div>
+                                                <div class="text-right">
+                                                    <p class="text-2xl font-bold text-blue-600">550 บาท</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-option rounded-xl p-4 cursor-pointer" onclick="selectPaymentOption('installment', this)">
+                                <div class="flex items-center">
+                                    <input type="radio" name="paymentType" value="ชำระแบบแบ่งจ่าย" id="paymentInstallment" class="mr-3 text-blue-600">
+                                    <div class="flex-1">
+                                        <label for="paymentInstallment" class="cursor-pointer">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h5 class="font-bold text-gray-800">ชำระแบบแบ่งจ่าย</h5>
+                                                    <p class="text-gray-600 text-sm">รอบที่ 1: 300 บาท (ตอนนี้)</p>
+                                                    <p class="text-gray-600 text-sm">รอบที่ 2: 250 บาท (1-7 ก.ย. 2568)</p>
+                                                </div>
+                                                <div class="text-right">
+                                                    <p class="text-2xl font-bold text-blue-600">300 บาท</p>
+                                                    <p class="text-sm text-gray-500">งวดแรก</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- อัปโหลดหลักฐาน -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-4">
+                        <i class="fas fa-upload text-blue-600 mr-2"></i>
+                        อัปโหลดหลักฐานการชำระเงิน
+                    </label>
+                    
+                    <div class="upload-zone rounded-2xl p-8 text-center" 
+                         ondrop="dropHandler(event)" 
+                         ondragover="dragOverHandler(event)" 
+                         ondragenter="dragEnterHandler(event)"
+                         ondragleave="dragLeaveHandler(event)">
+                        <input type="file" id="paymentProof" accept=".jpg,.jpeg,.png" required
+                               class="hidden" onchange="previewImage(this)">
+                        <label for="paymentProof" class="cursor-pointer block">
+                            <div id="uploadContent">
+                                <i class="fas fa-cloud-upload-alt text-6xl text-blue-500 mb-6 block"></i>
+                                <h4 class="text-xl font-bold text-gray-700 mb-2">อัปโหลดหลักฐานการชำระเงิน</h4>
+                                <p class="text-gray-600 mb-4">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวาง</p>
+                                <div class="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-image mr-1"></i>
+                                        <span>รองรับ .jpg, .jpeg, .png</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-weight-hanging mr-1"></i>
+                                        <span>ไม่เกิน 10MB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <!-- Preview Area -->
+                        <div id="imagePreview" class="mt-6 hidden">
+                            <div class="flex flex-col items-center">
+                                <img id="previewImg" class="image-preview mb-4">
+                                <div class="text-center">
+                                    <p id="fileName" class="text-lg font-medium text-gray-700 mb-2"></p>
+                                    <p id="fileSize" class="text-sm text-gray-500 mb-4"></p>
+                                    <button type="button" onclick="removeImage()" 
+                                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                        <i class="fas fa-trash mr-2"></i>
+                                        ลบไฟล์
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" 
+                        class="btn-primary text-white px-8 py-4 rounded-xl font-medium w-full text-lg">
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    ยืนยันสิทธิ์และส่งข้อมูล
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 loading-overlay flex items-center justify-center z-50 hidden">
+        <div class="glass-card rounded-2xl p-8 text-center max-w-md mx-4">
+            <div class="animate-spin rounded-full h-16 w-16 border-4 border-orange-500 border-t-transparent mx-auto mb-4"></div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">กำลังส่งข้อมูล...</h3>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                <div id="progressBar" class="progress-bar h-3 rounded-full" style="width: 0%"></div>
+            </div>
+            <p id="progressText" class="text-gray-600">0%</p>
+        </div>
+    </div>
+
+    <!-- Success/Error Messages -->
+    <div id="messageContainer" class="fixed top-4 right-4 z-50"></div>
+
+    <script>
+        // Google Apps Script API URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyK_QOVaNg4Dz_X8sXc5WWApyqiuTzBGdemFUyBZeMva0nqf4-iKxv65ix2ejsyr9bZzw/exec';
+
+        // ค้นหาผลการคัดเลือก
+        async function searchResult() {
+            const studentId = document.getElementById('studentId').value.trim();
+            
+            if (!studentId || studentId.length !== 11 || !/^\d{11}$/.test(studentId)) {
+                showMessage('กรุณากรอกรหัสนิสิต 11 หลัก (ตัวเลขเท่านั้น)', 'error');
+                return;
+            }
+
+            try {
+                showLoading(true);
+                updateProgress(30, 'กำลังค้นหาข้อมูล...');
+
+                const response = await fetch(`${APPS_SCRIPT_URL}?action=search&studentId=${studentId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                updateProgress(70, 'กำลังประมวลผล...');
+
+                updateProgress(100, 'เสร็จสิ้น');
+
+                setTimeout(() => {
+                    showLoading(false);
+                    displaySearchResult(result);
+                }, 500);
+
+            } catch (error) {
+                showLoading(false);
+                showMessage('เกิดข้อผิดพลาดในการค้นหา: ' + error.message, 'error');
+                console.error('Search error:', error);
+            }
+        }
+
+        // แสดงผลการค้นหา
+        function displaySearchResult(result) {
+            const resultDiv = document.getElementById('searchResult');
+            
+            if (result.success && result.data) {
+                const data = result.data;
+                if (data.status === 'ผ่านการสัมภาษณ์') {
+                    resultDiv.innerHTML = `
+                        <div class="result-card rounded-xl p-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-check-circle text-green-500 text-2xl mr-3"></i>
+                                <h3 class="text-xl font-bold text-green-700">ยินดีด้วย! คุณผ่านการคัดเลือก</h3>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <p><strong>ชื่อ-สกุล:</strong> ${data.name}</p>
+                                <p><strong>สาขาวิชา:</strong> ${data.major}</p>
+                                <p><strong>ชั้นปี:</strong> ${data.year}</p>
+                                <p><strong>สายงาน:</strong> ${data.track}</p>
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <button onclick="showConfirmForm('${data.name}', '${document.getElementById('studentId').value}', '${data.major}', '${data.year}')"
+                                        class="btn-primary text-white px-6 py-3 rounded-xl font-medium flex-1">
+                                    <i class="fas fa-user-check mr-2"></i>
+                                    ยืนยันสิทธิ์
+                                </button>
+                                <button onclick="confirmReject()" 
+                                        class="btn-secondary text-white px-6 py-3 rounded-xl font-medium flex-1">
+                                    <i class="fas fa-times mr-2"></i>
+                                    สละสิทธิ์
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="reject-card rounded-xl p-6 text-center">
+                            <i class="fas fa-heart text-red-500 text-4xl mb-4"></i>
+                            <h3 class="text-xl font-bold text-red-700 mb-3">ขออภัย คุณไม่ผ่านการคัดเลือกในครั้งนี้</h3>
+                            <p class="text-gray-600 mb-4">
+                                แต่อย่าท้อแท้นะ! ยังมีโอกาสอีกมากมายรออยู่ 
+                                ขอให้คุณมีกำลังใจและพัฒนาตนเองต่อไป
+                            </p>
+                            <p class="text-sm text-gray-500">💪 สู้ต่อไป เราเชื่อในตัวคุณ!</p>
+                        </div>
+                    `;
+                }
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="reject-card rounded-xl p-6 text-center">
+                        <i class="fas fa-search text-red-500 text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-red-700 mb-3">ไม่พบข้อมูลรหัสนิสิตนี้</h3>
+                        <p class="text-gray-600">กรุณาตรวจสอบรหัสนิสิตและลองใหม่อีกครั้ง</p>
+                    </div>
+                `;
+            }
+            
+            resultDiv.classList.remove('hidden');
+        }
+
+        // แสดงฟอร์มยืนยันสิทธิ์
+function showConfirmForm(name, studentId, major, year) {
+    document.getElementById('fullName').value = name;
+    document.getElementById('studentIdForm').value = studentId;
+    document.getElementById('major').value = major;
+    document.getElementById('year').value = year;
+    document.getElementById('confirmForm').classList.remove('hidden');
+    document.getElementById('confirmForm').scrollIntoView({ behavior: 'smooth' });
+}
+
+        // ยืนยันการสละสิทธิ์
+        function confirmReject() {
+            if (confirm('คุณแน่ใจหรือไม่ที่จะสละสิทธิ์?')) {
+                showMessage('ขอบคุณที่แจ้งให้ทราบ', 'success');
+                document.getElementById('searchResult').innerHTML = `
+                    <div class="glass-card rounded-xl p-6 text-center">
+                        <i class="fas fa-handshake text-orange-500 text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-700">ขอบคุณที่แจ้งให้ทราบ</h3>
+                        <p class="text-gray-600 mt-2">หวังว่าจะได้พบกันในโอกาสต่อไป</p>
+                    </div>
+                `;
+            }
+        }
+
+        // เลือกวิธีการชำระเงิน
+        function selectPaymentOption(type, element) {
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            document.getElementById(type === 'full' ? 'paymentFull' : 'paymentInstallment').checked = true;
+        }
+
+        // Drag and Drop handlers
+        function dragOverHandler(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('dragover');
+        }
+
+        function dragEnterHandler(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('dragover');
+        }
+
+        function dragLeaveHandler(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.remove('dragover');
+        }
+
+        function dropHandler(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.remove('dragover');
+            const files = ev.dataTransfer.files;
+            if (files.length > 0) {
+                const fileInput = document.getElementById('paymentProof');
+                fileInput.files = files;
+                previewImage(fileInput);
+            }
+        }
+
+        // Preview รูปภาพ
+        function previewImage(input) {
+            const file = input.files[0];
+            if (file) {
+                if (file.size > 10 * 1024 * 1024) {
+                    showMessage('ขนาดไฟล์เกิน 10MB กรุณาเลือกไฟล์ใหม่', 'error');
+                    input.value = '';
+                    return;
+                }
+
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                if (!allowedTypes.includes(file.type)) {
+                    showMessage('กรุณาเลือกไฟล์ .jpg, .jpeg หรือ .png เท่านั้น', 'error');
+                    input.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('fileName').textContent = file.name;
+                    document.getElementById('fileSize').textContent = formatFileSize(file.size);
+                    document.getElementById('uploadContent').classList.add('hidden');
+                    document.getElementById('imagePreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // ลบรูปภาพ
+        function removeImage() {
+            document.getElementById('paymentProof').value = '';
+            document.getElementById('uploadContent').classList.remove('hidden');
+            document.getElementById('imagePreview').classList.add('hidden');
+        }
+
+        // แปลงขนาดไฟล์
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // ส่งฟอร์ม
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const paymentType = document.querySelector('input[name="paymentType"]:checked');
+            if (!paymentType) {
+                showMessage('กรุณาเลือกวิธีการชำระเงิน', 'error');
+                return;
+            }
+            
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('กรุณากรอกอีเมลที่ถูกต้อง', 'error');
+                return;
+            }
+
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                showMessage('กรุณากรอกเบอร์โทรศัพท์ 10 หลัก (ตัวเลขเท่านั้น)', 'error');
+                return;
+            }
+
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                studentId: document.getElementById('studentIdForm').value,
+                major: document.getElementById('major').value,
+                year: document.getElementById('year').value,
+                email: email,
+                phone: phone,
+                facebook: document.getElementById('facebook').value,
+                nickname: document.getElementById('nickname').value,
+                paymentType: paymentType.value
+            };
+
+            const fileInput = document.getElementById('paymentProof');
+            if (!fileInput.files[0]) {
+                showMessage('กรุณาอัปโหลดหลักฐานการชำระเงิน', 'error');
+                return;
+            }
+
+            try {
+                showLoading(true);
+                updateProgress(20, 'กำลังเตรียมข้อมูล...');
+
+                const file = fileInput.files[0];
+                const base64 = await fileToBase64(file);
+                
+                updateProgress(40, 'กำลังส่งข้อมูล...');
+
+                const payload = {
+                    action: 'submit',
+                    data: formData,
+                    file: {
+                        name: file.name,
+                        type: file.type,
+                        data: base64
+                    }
+                };
+
+                updateProgress(60, 'กำลังบันทึกข้อมูล...');
+
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                updateProgress(80, 'กำลังส่งอีเมล...');
+                const result = await response.json();
+                updateProgress(100, 'เสร็จสิ้น');
+
+                setTimeout(() => {
+                    showLoading(false);
+                    if (result.success) {
+                        showMessage('ส่งข้อมูลสำเร็จ! กรุณาตรวจสอบอีเมลของคุณ', 'success');
+                        document.getElementById('uploadForm').reset();
+                        document.getElementById('imagePreview').classList.add('hidden');
+                        document.getElementById('uploadContent').classList.remove('hidden');
+                    } else {
+                        showMessage('เกิดข้อผิดพลาด: ' + (result.error || 'กรุณาลองใหม่อีกครั้ง'), 'error');
+                    }
+                }, 500);
+
+            } catch (error) {
+                showLoading(false);
+                showMessage('เกิดข้อผิดพลาดในการส่งข้อมูล: ' + error.message, 'error');
+                console.error('Submit error:', error);
+            }
+        });
+
+        // แปลงไฟล์เป็น base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // แสดง Loading
+        function showLoading(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+                updateProgress(0, 'เริ่มต้น...');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // อัปเดต Progress Bar
+        function updateProgress(percent, text) {
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressText').textContent = percent + '% - ' + text;
+        }
+
+        // แสดงข้อความแจ้งเตือน
+        function showMessage(message, type) {
+            const container = document.getElementById('messageContainer');
+            const messageDiv = document.createElement('div');
+            
+            const bgClass = type === 'success' ? 'success-message' : 'error-message';
+            const icon = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            
+            messageDiv.className = `${bgClass} text-white px-6 py-4 rounded-xl mb-4 shadow-lg flex items-center`;
+            messageDiv.innerHTML = `
+                <i class="${icon} mr-3"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" class="ml-auto text-white hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            container.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                if (messageDiv.parentElement) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
+
+        // ตรวจสอบรหัสนิสิตให้เป็นตัวเลขเท่านั้น
+        document.getElementById('studentId').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('studentIdForm').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        // ตรวจสอบเบอร์โทรให้เป็นตัวเลขเท่านั้น
+        document.getElementById('phone').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>
