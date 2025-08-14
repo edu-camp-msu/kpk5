@@ -483,6 +483,7 @@
 
         // ค้นหาผลการคัดเลือก
         async function searchResult() {
+            document.getElementById('confirmForm').classList.add('hidden');
             const studentId = document.getElementById('studentId').value.trim();
             
             if (!studentId || studentId.length !== 11 || !/^\d{11}$/.test(studentId)) {
