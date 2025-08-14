@@ -11,140 +11,153 @@
         
         body {
             font-family: 'Kanit', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #fef3e7 0%, #ffe5cc 50%, #ffdab9 100%);
             min-height: 100vh;
         }
         
         .header-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
+            box-shadow: 0 8px 20px rgba(251, 146, 60, 0.2);
+            border-radius: 0 0 24px 24px;
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 146, 60, 0.15);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            background: linear-gradient(135deg, #f97316, #fb923c);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.25);
+            border-radius: 12px;
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            background: linear-gradient(135deg, #ea580c, #f97316);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 6px 18px rgba(251, 146, 60, 0.35);
         }
         
         .btn-secondary {
-            background: linear-gradient(135deg, #64748b, #475569);
+            background: linear-gradient(135deg, #6b7280, #4b5563);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.2);
+            box-shadow: 0 4px 12px rgba(107, 114, 128, 0.25);
+            border-radius: 12px;
         }
         
         .btn-secondary:hover {
-            background: linear-gradient(135deg, #475569, #334155);
+            background: linear-gradient(135deg, #4b5563, #374151);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(100, 116, 139, 0.3);
+            box-shadow: 0 6px 18px rgba(107, 114, 128, 0.35);
         }
         
         .input-field {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid rgba(59, 130, 246, 0.2);
+            background: rgba(255, 255, 255, 0.98);
+            border: 2px solid rgba(251, 146, 60, 0.2);
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
         }
         
         .input-field:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #fb923c;
+            box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.15);
             background: rgba(255, 255, 255, 1);
         }
         
         .payment-info-card {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            border: 2px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+            background: linear-gradient(135deg, #fef3e7 0%, #ffedd5 100%);
+            border: 2px solid rgba(251, 146, 60, 0.2);
+            box-shadow: 0 6px 16px rgba(251, 146, 60, 0.1);
+            border-radius: 16px;
         }
         
         .upload-zone {
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            border: 3px dashed rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px dashed rgba(251, 146, 60, 0.3);
+            border-radius: 16px;
             transition: all 0.3s ease;
         }
         
         .upload-zone:hover {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-color: #fb923c;
+            background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
         }
         
         .upload-zone.dragover {
-            border-color: #1d4ed8;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-            transform: scale(1.02);
+            border-color: #ea580c;
+            background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
+            transform: scale(1.01);
         }
         
         .progress-bar {
-            background: linear-gradient(90deg, #1e40af, #3b82f6);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            border-radius: 12px;
         }
         
         .loading-overlay {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
         }
         
         .success-message {
-            background: linear-gradient(135deg, #059669, #10b981);
+            background: linear-gradient(135deg, #10b981, #34d399);
+            border-radius: 12px;
         }
         
         .error-message {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 12px;
         }
         
         .result-card {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.1));
-            border: 2px solid rgba(5, 150, 105, 0.3);
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.1);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.1));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.1);
+            border-radius: 16px;
         }
         
         .reject-card {
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.1));
-            border: 2px solid rgba(220, 38, 38, 0.3);
-            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.1);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 6px 16px rgba(239, 68, 68, 0.1);
+            border-radius: 16px;
         }
         
         .image-preview {
-            max-width: 250px;
-            max-height: 250px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            border: 3px solid rgba(59, 130, 246, 0.2);
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(251, 146, 60, 0.2);
         }
         
         .payment-option {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(59, 130, 246, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(251, 146, 60, 0.2);
+            border-radius: 12px;
             transition: all 0.3s ease;
         }
         
         .payment-option:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+            border-color: #fb923c;
+            box-shadow: 0 4px 12px rgba(251, 146, 60, 0.15);
         }
         
         .payment-option.selected {
-            border-color: #1d4ed8;
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #ea580c;
+            background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
         }
         
         .bank-info {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
             color: white;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+            box-shadow: 0 6px 16px rgba(251, 146, 60, 0.2);
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -153,10 +166,10 @@
     <div class="header-gradient py-8 mb-8">
         <div class="container mx-auto px-4">
             <h1 class="text-2xl md:text-4xl font-bold text-white text-center">
-                <i class="fas fa-graduation-cap mr-3 text-yellow-300"></i>
+                <i class="fas fa-graduation-cap mr-3 text-yellow-200"></i>
                 ระบบประกาศผลและยืนยันสิทธิ์ พี่ค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5
             </h1>
-            <p class="text-blue-100 text-center mt-3 text-lg">มหาวิทยาลัยมหาสารคาม</p>
+            <p class="text-orange-100 text-center mt-3 text-lg">มหาวิทยาลัยมหาสารคาม</p>
         </div>
     </div>
 
@@ -164,13 +177,13 @@
         <!-- ระบบประกาศผล -->
         <div id="searchSection" class="glass-card rounded-2xl p-6 md:p-8 mb-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-search text-blue-600 mr-3"></i>
+                <i class="fas fa-search text-orange-600 mr-3"></i>
                 ระบบประกาศผลพี่ค่าย
             </h2>
             
             <div class="mb-6">
                 <label class="block text-gray-700 font-medium mb-2">
-                    <i class="fas fa-id-card text-blue-600 mr-2"></i>
+                    <i class="fas fa-id-card text-orange-600 mr-2"></i>
                     รหัสนิสิต (11 หลัก)
                 </label>
                 <input type="text" id="studentId" maxlength="11" 
@@ -191,7 +204,7 @@
         <!-- ฟอร์มยืนยันสิทธิ์ -->
         <div id="confirmForm" class="glass-card rounded-2xl p-6 md:p-8 hidden">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                <i class="fas fa-user-check text-blue-600 mr-3"></i>
+                <i class="fas fa-user-check text-orange-600 mr-3"></i>
                 ฟอร์มยืนยันสิทธิ์
             </h2>
             
@@ -199,7 +212,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-user text-blue-600 mr-2"></i>
+                            <i class="fas fa-user text-orange-600 mr-2"></i>
                             ชื่อ-สกุล
                         </label>
                         <input type="text" id="fullName" required
@@ -208,7 +221,7 @@
                     
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-id-card text-blue-600 mr-2"></i>
+                            <i class="fas fa-id-card text-orange-600 mr-2"></i>
                             รหัสนิสิต
                         </label>
                         <input type="text" id="studentIdForm" required
@@ -219,7 +232,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-book text-blue-600 mr-2"></i>
+                            <i class="fas fa-book text-orange-600 mr-2"></i>
                             สาขาวิชา
                         </label>
                         <select id="major" required
@@ -243,7 +256,7 @@
                     
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                            <i class="fas fa-graduation-cap text-orange-600 mr-2"></i>
                             ชั้นปี
                         </label>
                         <select id="year" required
@@ -260,7 +273,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-envelope text-blue-600 mr-2"></i>
+                            <i class="fas fa-envelope text-orange-600 mr-2"></i>
                             อีเมล
                         </label>
                         <input type="email" id="email" required
@@ -269,7 +282,7 @@
                     
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-phone text-blue-600 mr-2"></i>
+                            <i class="fas fa-phone text-orange-600 mr-2"></i>
                             เบอร์โทรศัพท์
                         </label>
                         <input type="tel" id="phone" required
@@ -280,10 +293,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fab fa-facebook text-blue-600 mr-2"></i>
+                            <i class="fab fa-facebook text-orange-600 mr-2"></i>
                             Facebook
-
-
                         </label>
                         <input type="url" id="facebook" required
                                class="input-field w-full px-4 py-3 rounded-xl focus:outline-none"
@@ -292,7 +303,7 @@
                     
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">
-                            <i class="fas fa-smile text-blue-600 mr-2"></i>
+                            <i class="fas fa-smile text-orange-600 mr-2"></i>
                             ชื่อเล่น (ไม่เกิน 3 พยางค์)
                         </label>
                         <input type="text" id="nickname" required maxlength="20"
@@ -303,7 +314,7 @@
                 <!-- ข้อมูลการชำระเงิน -->
                 <div class="payment-info-card rounded-2xl p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                        <i class="fas fa-credit-card text-blue-600 mr-3"></i>
+                        <i class="fas fa-credit-card text-orange-600 mr-3"></i>
                         ข้อมูลการชำระเงิน
                     </h3>
                     
@@ -315,21 +326,21 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                             <div class="flex items-center">
-                                <i class="fas fa-building mr-2 text-blue-200"></i>
+                                <i class="fas fa-building mr-2 text-orange-200"></i>
                                 <div>
                                     <p class="font-medium">ธนาคาร</p>
                                     <p>กสิกรไทย</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-hashtag mr-2 text-blue-200"></i>
+                                <i class="fas fa-hashtag mr-2 text-orange-200"></i>
                                 <div>
                                     <p class="font-medium">เลขที่บัญชี</p>
                                     <p class="font-mono text-lg">062-2-60574-0</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-user mr-2 text-blue-200"></i>
+                                <i class="fas fa-user mr-2 text-orange-200"></i>
                                 <div>
                                     <p class="font-medium">ชื่อบัญชี</p>
                                     <p>นางสาวนนทิยา มูลภักดิ์</p>
@@ -341,14 +352,14 @@
                     <!-- เลือกวิธีการชำระเงิน -->
                     <div class="mb-6">
                         <label class="block text-gray-700 font-medium mb-4">
-                            <i class="fas fa-money-bill-wave text-blue-600 mr-2"></i>
+                            <i class="fas fa-money-bill-wave text-orange-600 mr-2"></i>
                             เลือกวิธีการชำระเงิน
                         </label>
                         
                         <div class="space-y-4">
                             <div class="payment-option rounded-xl p-4 cursor-pointer" onclick="selectPaymentOption('full', this)">
                                 <div class="flex items-center">
-                                    <input type="radio" name="paymentType" value="ชำระเต็มจำนวน" id="paymentFull" class="mr-3 text-blue-600">
+                                    <input type="radio" name="paymentType" value="ชำระเต็มจำนวน" id="paymentFull" class="mr-3 text-orange-600">
                                     <div class="flex-1">
                                         <label for="paymentFull" class="cursor-pointer">
                                             <div class="flex items-center justify-between">
@@ -357,7 +368,7 @@
                                                     <p class="text-gray-600 text-sm">ชำระครั้งเดียว</p>
                                                 </div>
                                                 <div class="text-right">
-                                                    <p class="text-2xl font-bold text-blue-600">550 บาท</p>
+                                                    <p class="text-2xl font-bold text-orange-600">550 บาท</p>
                                                 </div>
                                             </div>
                                         </label>
@@ -367,7 +378,7 @@
                             
                             <div class="payment-option rounded-xl p-4 cursor-pointer" onclick="selectPaymentOption('installment', this)">
                                 <div class="flex items-center">
-                                    <input type="radio" name="paymentType" value="ชำระแบบแบ่งจ่าย" id="paymentInstallment" class="mr-3 text-blue-600">
+                                    <input type="radio" name="paymentType" value="ชำระแบบแบ่งจ่าย" id="paymentInstallment" class="mr-3 text-orange-600">
                                     <div class="flex-1">
                                         <label for="paymentInstallment" class="cursor-pointer">
                                             <div class="flex items-center justify-between">
@@ -377,7 +388,7 @@
                                                     <p class="text-gray-600 text-sm">รอบที่ 2: 250 บาท (1-7 ก.ย. 2568)</p>
                                                 </div>
                                                 <div class="text-right">
-                                                    <p class="text-2xl font-bold text-blue-600">300 บาท</p>
+                                                    <p class="text-2xl font-bold text-orange-600">300 บาท</p>
                                                     <p class="text-sm text-gray-500">งวดแรก</p>
                                                 </div>
                                             </div>
@@ -392,7 +403,7 @@
                 <!-- อัปโหลดหลักฐาน -->
                 <div>
                     <label class="block text-gray-700 font-medium mb-4">
-                        <i class="fas fa-upload text-blue-600 mr-2"></i>
+                        <i class="fas fa-upload text-orange-600 mr-2"></i>
                         อัปโหลดหลักฐานการชำระเงิน
                     </label>
                     
@@ -405,11 +416,11 @@
                                class="hidden" onchange="previewImage(this)">
                         <label for="paymentProof" class="cursor-pointer block">
                             <div id="uploadContent">
-                                <i class="fas fa-cloud-upload-alt text-6xl text-blue-500 mb-6 block"></i>
+                                <i class="fas fa-cloud-upload-alt text-5xl text-orange-500 mb-6 block"></i>
                                 <h4 class="text-xl font-bold text-gray-700 mb-2">อัปโหลดหลักฐานการชำระเงิน</h4>
                                 <p class="text-gray-600 mb-4">คลิกเพื่อเลือกไฟล์หรือลากไฟล์มาวาง</p>
                                 <div class="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                                    <div class="flex items-center">
+                                    <div class="flex items http://items-center">
                                         <i class="fas fa-file-image mr-1"></i>
                                         <span>รองรับ .jpg, .jpeg, .png</span>
                                     </div>
@@ -451,7 +462,7 @@
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="fixed inset-0 loading-overlay flex items-center justify-center z-50 hidden">
         <div class="glass-card rounded-2xl p-8 text-center max-w-md mx-4">
-            <div class="animate-spin rounded-full h-16 w-16 border-4 border-orange-500 border-t-transparent mx-auto mb-4"></div>
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-orange-500 border-t-transparent mx-auto mb-4"></div>
             <h3 class="text-xl font-bold text-gray-800 mb-2">กำลังส่งข้อมูล...</h3>
             <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
                 <div id="progressBar" class="progress-bar h-3 rounded-full" style="width: 0%"></div>
@@ -568,14 +579,14 @@
         }
 
         // แสดงฟอร์มยืนยันสิทธิ์
-function showConfirmForm(name, studentId, major, year) {
-    document.getElementById('fullName').value = name;
-    document.getElementById('studentIdForm').value = studentId;
-    document.getElementById('major').value = major;
-    document.getElementById('year').value = year;
-    document.getElementById('confirmForm').classList.remove('hidden');
-    document.getElementById('confirmForm').scrollIntoView({ behavior: 'smooth' });
-}
+        function showConfirmForm(name, studentId, major, year) {
+            document.getElementById('fullName').value = name;
+            document.getElementById('studentIdForm').value = studentId;
+            document.getElementById('major').value = major;
+            document.getElementById('year').value = year;
+            document.getElementById('confirmForm').classList.remove('hidden');
+            document.getElementById('confirmForm').scrollIntoView({ behavior: 'smooth' });
+        }
 
         // ยืนยันการสละสิทธิ์
         function confirmReject() {
