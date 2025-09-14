@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบผลการคัดเลือก - EDU CAMP #5</title>
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --primary-orange: #FF6B00;
+            --dark-gray: #333;
+            --light-gray: #f4f4f4;
+            --border-gray: rgba(209, 213, 219, 0.3);
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--dark-gray);
+            padding: 1rem;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 550px;
+            padding: 2.5rem;
+            border-radius: 20px;
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+        
+        header img.logo {
+            max-width: 150px;
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        #citizenId {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-gray);
+            font-size: 1rem;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        #citizenId:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+        }
+
+        .check-button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--primary-orange);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check-button:hover {
+            background-color: #E65C00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .check-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #result-display {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: none; /* Hidden by default */
+        }
+        
+        .result-content h2 { margin-top: 0; }
+        .result-content p { margin: 0.5rem 0; }
+        .result-content .detail { color: #555; }
+        
+        .confirm-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .confirm-button:hover { background-color: #218838; }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <img src="https://lh3.googleusercontent.com/d/1sLCcPOyFXaKyPq0U6GrzSXCDkjMB6dXP" alt="Logo ค่ายคนพันธุ์ครู" class="logo">
+            <h1>ระบบยืนยันสิทธิ์น้องค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</h1>
+            <p>คณะศึกษาศาสตร์ มหาวิทยาลัยมหาสารคาม</p>
+        </header>
+
+        <form id="checkForm">
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="citizenId" name="citizenId" placeholder="กรอกเลขบัตรประจำตัวประชาชน 13 หลัก" required pattern="\d{13}" title="กรุณากรอกเลขบัตรประชาชน 13 หลัก">
+            </div>
+            <button type="submit" class="check-button" id="submitBtn">
+                <span id="btnText">ตรวจสอบผลการคัดเลือก</span>
+                <div class="spinner" id="spinner" style="display: none;"></div>
+            </button>
+        </form>
+
+        <div id="result-display">
+            <!-- Content will be injected by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('checkForm');
+        const citizenIdInput = document.getElementById('citizenId');
+        const resultDisplay = document.getElementById('result-display');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+
+        // Clear session storage on page load to ensure a clean login
+        sessionStorage.clear();
+
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxrPrhDyKFhgHbwHdRbkjmZntOHS-Sjb-FSvvyJ2_Ia4tuWMingLjUCTgQ9QeWrRFN3zQ/exec';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            setLoading(true);
+            resultDisplay.style.display = 'none';
+
+            const citizenId = citizenIdInput.value;
+            const payload = {
+                action: 'checkStatus',
+                citizenId: citizenId
+            };
+
+            try {
+                const response = await fetch(GAS_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'text/plain' }, // Use text/plain for GAS
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                handleResponse(result);
+
+            } catch (error) {
+                console.error('Error:', error);
+                displayResult('error', 'เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading) {
+            submitBtn.disabled = isLoading;
+            spinner.style.display = isLoading ? 'block' : 'none';
+            btnText.textContent = isLoading ? 'กำลังตรวจสอบ...' : 'ตรวจสอบผลการคัดเลือก';
+        }
+        
+        function launchConfetti() {
+             var duration = 5 * 1000;
+             var animationEnd = Date.now() + duration;
+             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+             function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+             var interval = setInterval(function() {
+                 var timeLeft = animationEnd - Date.now();
+                 if (timeLeft <= 0) { return clearInterval(interval); }
+                 var particleCount = 50 * (timeLeft / duration);
+                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+             }, 250);
+        }
+
+        function handleResponse(res) {
+            let message = '';
+            let animation = 'animate__animated animate__fadeInUp';
+            let bgColor = '';
+            let contentHTML = '';
+
+            switch (res.status) {
+                case 'ผ่าน':
+                    launchConfetti();
+                    bgColor = 'rgba(40, 167, 69, 0.1)';
+                    contentHTML = `
+                        <div class="result-content animate__animated animate__tada">
+                            <h2 style="color: #28a745;">🎉 ยินดีด้วย คุณผ่านการคัดเลือก!</h2>
+                            <p><strong>ชื่อ-สกุล:</strong> ${res.data.prefix}${res.data.fullName}</p>
+                            <p><strong>โรงเรียน:</strong> ${res.data.school}</p>
+                            <p><strong>จังหวัด:</strong> ${res.data.province}</p>
+                            <a href="#" id="confirmBtn" class="confirm-button">คลิกเพื่อยืนยันสิทธิ์</a>
+                        </div>
+                    `;
+                    // Store data and token to pass to the next page
+                    sessionStorage.setItem('kpk5_data', JSON.stringify(res.data));
+                    sessionStorage.setItem('kpk5_token', res.token);
+                    
+                    // Add event listener after creating the button
+                    setTimeout(() => {
+                        document.getElementById('confirmBtn').addEventListener('click', (e) => {
+                            e.preventDefault();
+                            window.location.href = 'confirm.html';
+                        });
+                    }, 0);
+                    break;
+
+                case 'already_confirmed':
+                    bgColor = 'rgba(23, 162, 184, 0.1)';
+                    contentHTML = `
+                        <div class="result-content">
+                             <h2 style="color: #17a2b8;">✔️ ยืนยันสิทธิ์เรียบร้อยแล้ว</h2>
+                             <p style="white-space: pre-wrap; text-align: left;">${res.message}</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'สำรอง':
+                    bgColor = 'rgba(255, 193, 7, 0.1)';
+                     contentHTML = `<h2 style="color: #ffc107;">🟡 ${res.message}</h2>`;
+                    animation = 'animate__animated animate__pulse';
+                    break;
+
+                case 'ไม่ผ่าน':
+                    bgColor = 'rgba(220, 53, 69, 0.1)';
+                    contentHTML = `<h2 style="color: #dc3545;">🔴 ${res.message}</h2>`;
+                     animation = 'animate__animated animate__shakeX';
+                    break;
+
+                case 'not_found':
+                case 'locked':
+                case 'error':
+                    bgColor = 'rgba(108, 117, 125, 0.1)';
+                    contentHTML = `<p style="color: #6c757d;">${res.message}</p>`;
+                    break;
+            }
+
+            resultDisplay.innerHTML = contentHTML;
+            resultDisplay.style.backgroundColor = bgColor;
+            resultDisplay.style.border = `1px solid ${bgColor.replace('0.1', '1').replace('rgba', 'rgb')}`;
+            resultDisplay.className = animation;
+            resultDisplay.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

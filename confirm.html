@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยืนยันสิทธิ์ - EDU CAMP #5</title>
+    <!-- CSS and Fonts from previous file are reused -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #FF6B00;
+            --dark-gray: #333;
+            --light-gray: #f4f4f4;
+            --border-gray: rgba(209, 213, 219, 0.7);
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--dark-gray);
+            padding: 2rem 1rem;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        header h1 {
+            font-size: 1.8rem; color: var(--primary-orange);
+            font-weight: 700; margin: 0.5rem 0;
+        }
+        header p { font-size: 1.1rem; color: #555; margin: 0; }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+        .form-section h2 {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-orange);
+            padding-left: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .full-width { grid-column: 1 / -1; }
+
+        .form-group label { font-weight: 500; color: #444; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 0.8rem; border-radius: 8px;
+            border: 1px solid var(--border-gray);
+            font-size: 1rem; box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .form-group input:disabled { background-color: #e9ecef; cursor: not-allowed; }
+
+        .file-upload-wrapper {
+            border: 2px dashed var(--border-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .file-upload-wrapper:hover { background-color: rgba(255, 107, 0, 0.05); }
+        .file-upload-wrapper i { font-size: 2rem; color: var(--primary-orange); }
+        .file-upload-wrapper p { margin: 0.5rem 0 0 0; color: #666; }
+        input[type="file"] { display: none; }
+        .image-preview {
+            max-width: 150px;
+            max-height: 150px;
+            margin-top: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .shirt-size-img { width: 100%; max-width: 300px; margin: 1rem auto; display: block; border-radius: 8px;}
+
+        .payment-info {
+            background-color: #fff3e0;
+            border: 1px solid #ffe0b2;
+            border-left: 5px solid var(--primary-orange);
+            padding: 1rem; border-radius: 8px;
+        }
+        .payment-info p { margin: 0.5rem 0; }
+
+        .submit-button {
+            width: 100%; padding: 1rem; border: none; border-radius: 10px;
+            background-color: var(--primary-orange);
+            color: white; font-size: 1.2rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease;
+            display: flex; justify-content: center; align-items: center; gap: 0.5rem;
+        }
+        .submit-button:hover { background-color: #E65C00; box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3); }
+        .submit-button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
+
+        .spinner {
+            width: 20px; height: 20px; border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%; border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            body { padding: 1rem; }
+            .main-container { padding: 1.5rem; }
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6);
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe; margin: auto; padding: 25px;
+            border: 1px solid #888; width: 90%; max-width: 500px;
+            border-radius: 15px; text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        .modal-content h2 { color: var(--primary-orange); }
+        .modal-content p { white-space: pre-wrap; text-align: left; }
+        .modal-button {
+            background-color: var(--primary-orange); color: white; padding: 10px 20px;
+            border: none; border-radius: 8px; cursor: pointer; margin-top: 1rem;
+        }
+        @keyframes fadeIn { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>ฟอร์มยืนยันสิทธิ์น้องค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</h1>
+            <p>กรุณาตรวจสอบและกรอกข้อมูลให้ครบถ้วน</p>
+        </header>
+
+        <form id="confirmationForm">
+            <!-- ข้อมูลส่วนตัว -->
+            <section class="form-section">
+                <h2><i class="fas fa-user-circle"></i> ข้อมูลส่วนตัว</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="citizenId">เลขบัตรประจำตัวประชาชน 13 หลัก</label>
+                        <input type="text" id="citizenId" name="citizenId" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prefix">คำนำหน้า</label>
+                        <select id="prefix" name="prefix" required>
+                            <option value="นาย">นาย</option>
+                            <option value="นาง">นาง</option>
+                            <option value="นางสาว">นางสาว</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">ชื่อ-สกุล</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">ชื่อเล่น (ไม่เกิน 3 พยางค์)</label>
+                        <input type="text" id="nickname" name="nickname" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="profilePic">รูปภาพสำหรับ ID-Card</label>
+                        <label for="profilePic" class="file-upload-wrapper">
+                            <i class="fas fa-camera"></i>
+                            <p>คลิกเพื่ออัปโหลดรูป</p>
+                            <small>(หน้าตรง ชัดเจน ไม่เกิน 10MB)</small>
+                        </label>
+                        <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
+                        <img id="profilePreview" class="image-preview" style="display:none;" alt="Preview">
+                    </div>
+                    <div class="form-group full-width">
+                         <label for="shirtSize">ไซต์เสื้อ</label>
+                         <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVB3OcLIyzNGtHJ-tgRwSJYElc8J3VuXH-RDYGlaAvWMhVcVXHQyfIei7DwfrhVN9DLL2lj7r6OI2FMCElcRcMFC9Tv4CEv_FtArl95N0j4w0jKv8BW7AtrCkjAEPniTBRIo5yIQttIg35oCDXNIGOasv_1CqrLRdyr2MQ?key=B3wLWtanb9s7IFJKQ6u0Ew" alt="T-Shirt Sizes" class="shirt-size-img">
+                         <select id="shirtSize" name="shirtSize" required>
+                            <option value="" disabled selected>กรุณาเลือก</option>
+                            <option value="SS">SS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                            <option value="3XL">3XL</option>
+                            <option value="4XL">4XL</option>
+                         </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- กิจกรรมค่าย -->
+            <section class="form-section">
+                <h2><i class="fas fa-lightbulb"></i> กิจกรรมค่าย</h2>
+                 <div class="form-grid">
+                    <div class="form-group">
+                         <label for="major">สาขาวิชาที่สนใจ</label>
+                         <select id="major" name="major" required>
+                            <option value="" disabled selected>กรุณาเลือก</option>
+                            <option>ภาษาไทย</option>
+                            <option>สังคมศึกษา</option>
+                            <option>วิทยาศาสตร์ทั่วไป</option>
+                            <option>ภาษาอังกฤษ</option>
+                            <option>คณิตศาสตร์</option>
+                            <option>การศึกษาปฐมวัย</option>
+                            <option>เทคโนโลยีการศึกษาและคอมพิวเตอร์ศึกษา</option>
+                            <option>พลศึกษาและการกีฬา</option>
+                            <option>จิตวิทยา</option>
+                            <option>วิทยาศาสตร์การกีฬา</option>
+                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dream">ความฝันที่อยากจะเป็นในอนาคต</label>
+                        <input type="text" id="dream" name="dream" placeholder="บอกเล่าความฝันสั้นๆ..." required>
+                    </div>
+                 </div>
+            </section>
+
+            <!-- ชำระเงิน -->
+            <section class="form-section">
+                <h2><i class="fas fa-money-bill-wave"></i> ชำระเงินค่ายืนยันสิทธิ์ (1,000 บาท)</h2>
+                <div class="payment-info">
+                    <p><strong>ช่องทางการโอนเงิน:</strong></p>
+                    <p><strong>ธนาคาร:</strong> กสิกรไทย</p>
+                    <p><strong>เลขที่บัญชี:</strong> 062-2-60574-0</p>
+                    <p><strong>ชื่อบัญชี:</strong> นางสาวนนทิยา มูลภักดิ์</p>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="slip">หลักฐานการชำระเงิน (สลิป)</label>
+                    <label for="slip" class="file-upload-wrapper">
+                        <i class="fas fa-receipt"></i>
+                        <p>คลิกเพื่ออัปโหลดสลิป</p>
+                        <small>(ไม่เกิน 10MB)</small>
+                    </label>
+                    <input type="file" id="slip" name="slip" accept="image/*" required>
+                    <img id="slipPreview" class="image-preview" style="display:none;" alt="Preview">
+                </div>
+            </section>
+            
+            <button type="submit" class="submit-button" id="submitBtn">
+                 <span id="btnText">ส่งข้อมูลการยืนยันสิทธิ์</span>
+                 <div class="spinner" id="spinner" style="display: none;"></div>
+            </button>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>✨ ยืนยันสิทธิ์สำเร็จ!</h2>
+            <p id="successMessage"></p>
+            <button id="closeModalBtn" class="modal-button">กลับไปหน้าแรก</button>
+        </div>
+    </div>
+
+    <script>
+        const userData = JSON.parse(sessionStorage.getItem('kpk5_data'));
+        const userToken = sessionStorage.getItem('kpk5_token');
+
+        // Security check: If no data or token, redirect back
+        if (!userData || !userToken) {
+            alert('กรุณาตรวจสอบผลการคัดเลือกก่อนทำการยืนยันสิทธิ์');
+            window.location.href = 'checknongkye.html';
+        }
+
+        // Populate form with data from previous page
+        document.getElementById('citizenId').value = userData.citizenId;
+        document.getElementById('prefix').value = userData.prefix;
+        document.getElementById('fullName').value = userData.fullName;
+
+        // Image Preview Logic
+        function setupImagePreview(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (file) {
+                    if (file.size > 10 * 1024 * 1024) { // 10MB validation
+                        alert('ขนาดไฟล์เกิน 10MB กรุณาเลือกไฟล์ใหม่');
+                        input.value = ''; // Clear the input
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        setupImagePreview('profilePic', 'profilePreview');
+        setupImagePreview('slip', 'slipPreview');
+
+        // Form Submission
+        const form = document.getElementById('confirmationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxrPrhDyKFhgHbwHdRbkjmZntOHS-Sjb-FSvvyJ2_Ia4tuWMingLjUCTgQ9QeWrRFN3zQ/exec';
+
+        const fileToBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                alert('กรุณากรอกข้อมูลให้ครบทุกช่อง');
+                return;
+            }
+            
+            setLoading(true);
+
+            try {
+                const profilePicFile = document.getElementById('profilePic').files[0];
+                const slipFile = document.getElementById('slip').files[0];
+
+                const [profilePicBase64, slipBase64] = await Promise.all([
+                    fileToBase64(profilePicFile),
+                    fileToBase64(slipFile)
+                ]);
+
+                const formData = {
+                    citizenId: document.getElementById('citizenId').value,
+                    prefix: document.getElementById('prefix').value,
+                    fullName: document.getElementById('fullName').value,
+                    nickname: document.getElementById('nickname').value,
+                    school: userData.school, // pass school from sessionStorage
+                    shirtSize: document.getElementById('shirtSize').value,
+                    major: document.getElementById('major').value,
+                    dream: document.getElementById('dream').value,
+                    profilePic: {
+                        base64: profilePicBase64,
+                        type: profilePicFile.type,
+                        name: profilePicFile.name
+                    },
+                    slip: {
+                        base64: slipBase64,
+                        type: slipFile.type,
+                        name: slipFile.name
+                    }
+                };
+
+                const payload = {
+                    action: 'submitConfirmation',
+                    payload: {
+                        token: userToken,
+                        formData: formData
+                    }
+                };
+                
+                const response = await fetch(GAS_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {'Content-Type': 'text/plain'},
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    sessionStorage.clear(); // Clear session on success
+                    showSuccessModal(result.message);
+                } else {
+                    alert('เกิดข้อผิดพลาด: ' + result.message);
+                }
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+            } finally {
+                setLoading(false);
+            }
+        });
+        
+        function setLoading(isLoading) {
+            submitBtn.disabled = isLoading;
+            spinner.style.display = isLoading ? 'block' : 'none';
+            btnText.textContent = isLoading ? 'กำลังส่งข้อมูล...' : 'ส่งข้อมูลการยืนยันสิทธิ์';
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('successModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+function showSuccessModal(message) {
+    document.getElementById('successMessage').innerHTML = message;
+    modal.style.display = 'flex';
+}
+
+        closeModalBtn.onclick = function() {
+            modal.style.display = 'none';
+            window.location.href = 'checknongkye.html';
+        }
+
+    </script>
+</body>
+</html>
