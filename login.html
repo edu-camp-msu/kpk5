@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ - EDU CAMP MSU ครั้งที่ 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="omltjNeeb_aJZQLtdr88TzyDt9z5xERXYj55BZiRF4U" />
+</head>
+<body>
+    <div class="container login-container">
+        <header>
+            <h1>เข้าสู่ระบบเพื่อตอบคำถาม</h1>
+            <h2>ค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</h2>
+        </header>
+
+        <form id="loginForm" class="card login-card">
+            <div class="form-icon">
+                <!-- SVG Icon for Login -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7.5" r="4.5"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            </div>
+
+            <p class="form-helper-text">กรุณาใช้รหัสอ้างอิงที่ได้รับหลังจากการสมัครและเลขบัตรประจำตัวประชาชนของตัวเองในการเข้าสู่ระบบ</p>
+
+            <div class="form-group">
+                <label for="referenceId">รหัสอ้างอิงการสมัคร</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">#</span>
+                    <input type="text" id="referenceId" name="referenceId" required placeholder="เช่น EDU17...">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nationalId">เลขบัตรประจำตัวประชาชน 13 หลัก</label>
+                 <div class="input-wrapper">
+                    <!-- SVG Icon for ID Card -->
+                    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5"/><path d="M2 10h20"/><path d="M6 14H4"/><path d="M10 14H8"/><path d="m22 14-4.5 4.5L16 17"/></svg>
+                    <input type="text" id="nationalId" name="nationalId" pattern="[0-9]{13}" required placeholder="xxxxxxxxxxxxx">
+                </div>
+            </div>
+
+            <p id="loginError" class="error-message"></p>
+            
+            <button type="submit" class="btn btn-full">เข้าสู่ระบบ</button>
+
+            <div class="form-footer">
+                <a href="index.html">กลับสู่หน้าหลัก</a>
+            </div>
+        </form>
+
+         <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>กำลังตรวจสอบ...</p>
+        </div>
+    </div>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const loginError = document.getElementById('loginError');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3ujgKEQ-eT1wgCDkkV_9KQGEaHo9K4tm6kbIscrrAmBWiidQ_fMqFWd9n4PEY8IPk/exec';
+
+    loginForm.addEventListener('submit', e => {
+        e.preventDefault();
+        loadingOverlay.style.display = 'flex';
+        loginError.style.display = 'none';
+
+        const referenceId = document.getElementById('referenceId').value;
+        const nationalId = document.getElementById('nationalId').value;
+
+        fetch(`${scriptURL}?action=login&referenceId=${referenceId}&nationalId=${nationalId}`, {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(res => {
+            loadingOverlay.style.display = 'none';
+            if (res.success) {
+                // CHANGED: เก็บ Token แทนข้อมูลดิบ
+                localStorage.setItem('eduCampUser', JSON.stringify({
+                    token: res.data.token,
+                    fullName: res.data.fullName
+                }));
+                window.location.href = 'answer.html';
+            } else {
+                loginError.textContent = res.error || 'ข้อมูลไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง';
+                loginError.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            loadingOverlay.style.display = 'none';
+            loginError.textContent = 'การเชื่อมต่อล้มเหลว: ' + error.message;
+            loginError.style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>

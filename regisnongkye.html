@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครเข้าร่วม EDU CAMP MSU ครั้งที่ 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="omltjNeeb_aJZQLtdr88TzyDt9z5xERXYj55BZiRF4U" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ระบบรับสมัครน้องค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</h1>
+            <h2>กรอกข้อมูลเพื่อสมัครเข้าร่วมโครงการ</h2>
+        </header>
+
+        <form id="registerForm" class="card" novalidate>
+            <!-- 2. การอนุญาตในการให้ข้อมูล -->
+            <section id="pdpa-section">
+                <h3>การอนุญาตในการให้ข้อมูล</h3>
+                <div class="pdpa-box">
+                    <h4>ประกาศการคุ้มครองข้อมูลส่วนบุคคล (PDPA) โครงการค่ายคนพันธุ์ครู EDU CAMP MSU</h4>
+                    <p>โครงการค่ายคนพันธุ์ครู EDU CAMP MSU ให้ความสำคัญกับการคุ้มครองข้อมูลส่วนบุคคลของผู้สมัครทุกท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</p>
+                    <p>ข้อมูลส่วนบุคคลที่ท่านได้ให้ไว้ในการสมัคร จะถูกเก็บรวบรวมและนำไปใช้เพื่อวัตถุประสงค์ดังต่อไปนี้:</p>
+                    <ul>
+                        <li>เพื่อยืนยันตัวตน และใช้ในการลงทะเบียนเข้าร่วมโครงการ</li>
+                        <li>เพื่อการวางแผน จัดเตรียมกิจกรรม สวัสดิการ และอำนวยความสะดวกต่างๆ</li>
+                        <li>เพื่อการติดต่อสื่อสาร แจ้งข่าวสาร และประสานงานที่สำคัญเกี่ยวกับโครงการ</li>
+                        <li>เพื่อการดูแลความปลอดภัย ของผู้เข้าร่วมกิจกรรมตลอดระยะเวลาของค่าย</li>
+                    </ul>
+                    <p>ทางโครงการจะเก็บรักษาข้อมูลของท่านไว้เป็นอย่างดีนับตั้งแต่วันที่สมัครจนกระทั่งสิ้นสุดโครงการ และมีมาตรการรักษาความปลอดภัยของข้อมูลอย่างเข้มงวดเพื่อป้องกันการรั่วไหลหรือการเข้าถึงโดยไม่ได้รับอนุญาต</p>
+                    <p>ทั้งนี้ ท่านมีสิทธิ์ในการขอเข้าถึง ตรวจสอบ หรือขอแก้ไขข้อมูลส่วนบุคคลของท่านให้ถูกต้องและเป็นปัจจุบันได้ โดยสามารถติดต่อผู้จัดโครงการได้ที่ Facebook Page: ค่ายคนพันธุ์ครู EDU CAMP MSU</p>
+                </div>
+                <div class="form-group">
+                    <label for="pdpaConsent">การยินยอมให้ข้อมูล</label>
+                    <select id="pdpaConsent" name="pdpaConsent" required>
+                        <option value="" disabled selected>กรุณาเลือก...</option>
+                        <option value="ยอมรับ">ยอมรับให้มีการจัดเก็บข้อมูลตามวัตถุประสงค์</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- 3. ข้อมูลส่วนตัว -->
+            <section id="personal-info">
+                <h3>ข้อมูลส่วนตัว</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="prefix">คำนำหน้า</label>
+                        <select id="prefix" name="prefix" required>
+                            <option value="" disabled selected>กรุณาเลือก...</option>
+                            <option value="นาย">นาย</option>
+                            <option value="นางสาว">นางสาว</option>
+                            <option value="เด็กชาย">เด็กชาย</option>
+                            <option value="เด็กหญิง">เด็กหญิง</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">ชื่อ-สกุล (ไม่ต้องมีคำนำหน้า)</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nationalId">เลขบัตรประจำตัวประชาชน 13 หลัก</label>
+                        <input type="text" id="nationalId" name="nationalId" pattern="[0-9]{13}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">วัน/เดือน/ปี เกิด</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="religion">ศาสนา</label>
+                        <select id="religion" name="religion" required>
+                            <option value="" disabled selected>กรุณาเลือก...</option>
+                            <option value="พุทธ">พุทธ</option>
+                            <option value="คริสต์">คริสต์</option>
+                            <option value="อิสลาม">อิสลาม</option>
+                            <option value="ฮินดู">ฮินดู</option>
+                            <option value="ไม่นับถือศาสนา">ไม่นับถือศาสนา</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="otherReligionContainer" style="display: none;">
+                        <label for="otherReligion">อื่นๆ (โปรดระบุ)</label>
+                        <input type="text" id="otherReligion" name="otherReligion">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="school">โรงเรียน (ให้พิมพ์เป็นชื่อเต็ม)</label>
+                        <input type="text" id="school" name="school" placeholder="เช่น โรงเรียนสาธิตมหาวิทยาลัยมหาสารคาม (ฝ่ายมัธยม)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">ระดับชั้น</label>
+                        <select id="grade" name="grade" required>
+                            <option value="" disabled selected>กรุณาเลือก...</option>
+                            <option value="ม.4">มัธยมศึกษาปีที่ 4</option>
+                            <option value="ม.5">มัธยมศึกษาปีที่ 5</option>
+                            <option value="ม.6">มัธยมศึกษาปีที่ 6</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="province">จังหวัด</label>
+                        <input type="text" id="province" name="province" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="foodAllergy">ข้อจำกัดด้านการแพ้อาหาร</label>
+                        <input type="text" id="foodAllergy" name="foodAllergy" placeholder="ไม่มี">
+                    </div>
+                    <div class="form-group">
+                        <label for="medicalCondition">โรคประจำตัวและข้อมูลการใช้ยา</label>
+                        <input type="text" id="medicalCondition" name="medicalCondition" placeholder="ไม่มี">
+                    </div>
+                    <div class="form-group">
+                        <label for="drugAllergy">ข้อมูลการแพ้ยา</label>
+                        <input type="text" id="drugAllergy" name="drugAllergy" placeholder="ไม่มี">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">รายวิชาที่สนใจ</label>
+                        <select id="interest" name="interest" required>
+                            <option value="" disabled selected>กรุณาเลือก...</option>
+                            <option value="ภาษาไทย">ภาษาไทย</option>
+                            <option value="สังคมศึกษา">สังคมศึกษา</option>
+                            <option value="วิทยาศาสตร์ทั่วไป">วิทยาศาสตร์ทั่วไป</option>
+                            <option value="ภาษาอังกฤษ">ภาษาอังกฤษ</option>
+                            <option value="คณิตศาสตร์">คณิตศาสตร์</option>
+                            <option value="การศึกษาปฐมวัย">การศึกษาปฐมวัย</option>
+                            <option value="เทคโนโลยีการศึกษาและคอมพิวเตอร์ศึกษา">เทคโนโลยีการศึกษาและคอมพิวเตอร์ศึกษา</option>
+                            <option value="พลศึกษาและการกีฬา">พลศึกษาและการกีฬา</option>
+                            <option value="จิตวิทยา">จิตวิทยา</option>
+                            <option value="วิทยาศาสตร์การกีฬา">วิทยาศาสตร์การกีฬา</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. ช่องทางการติดต่อ -->
+            <section id="contact-info">
+                <h3>ช่องทางการติดต่อ</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="address">ที่อยู่ (ที่สามารถติดต่อได้)</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">อีเมล</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook">Facebook (URL)</label>
+                        <input type="url" id="facebook" name="facebook" placeholder="https://www.facebook.com/username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram (URL)</label>
+                        <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/username" required>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 5. ข้อมูลผู้ปกครอง -->
+            <section id="parent-info">
+                <h3>ข้อมูลผู้ปกครอง</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="parentName">ชื่อ-สกุล ผู้ปกครอง</label>
+                        <input type="text" id="parentName" name="parentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentRelationship">เกี่ยวข้องเป็น</label>
+                        <select id="parentRelationship" name="parentRelationship" required>
+                            <option value="" disabled selected>กรุณาเลือก...</option>
+                            <option value="พ่อ">พ่อ</option>
+                            <option value="แม่">แม่</option>
+                            <option value="ลุง">ลุง</option>
+                            <option value="ป้า">ป้า</option>
+                            <option value="น้า">น้า</option>
+                            <option value="อา">อา</option>
+                            <option value="ปู่">ปู่</option>
+                            <option value="ย่า">ย่า</option>
+                            <option value="ตา">ตา</option>
+                            <option value="ยาย">ยาย</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentPhone">เบอร์โทรศัพท์ ผู้ปกครอง</label>
+                        <input type="tel" id="parentPhone" name="parentPhone" required>
+                    </div>
+                </div>
+            </section>
+
+            <button type="submit" id="submitBtn" class="btn" disabled>สมัครเข้าค่าย</button>
+        </form>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>กำลังส่งข้อมูล...</p>
+        </div>
+
+        <div id="result" class="card" style="display: none;"></div>
+    </div>
+
+    <script>
+        const pdpaConsent = document.getElementById('pdpaConsent');
+        const submitBtn = document.getElementById('submitBtn');
+
+        pdpaConsent.addEventListener('change', function() {
+            if (this.value === 'ยอมรับ') {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        });
+
+        document.getElementById('religion').addEventListener('change', function () {
+            const otherContainer = document.getElementById('otherReligionContainer');
+            if (this.value === 'อื่นๆ') {
+                otherContainer.style.display = 'block';
+                document.getElementById('otherReligion').required = true;
+            } else {
+                otherContainer.style.display = 'none';
+                document.getElementById('otherReligion').required = false;
+            }
+        });
+
+        const form = document.getElementById('registerForm');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const resultDiv = document.getElementById('result');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz3ujgKEQ-eT1wgCDkkV_9KQGEaHo9K4tm6kbIscrrAmBWiidQ_fMqFWd9n4PEY8IPk/exec';
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // --- START: โค้ดส่วนที่แก้ไข ---
+            // ตรวจสอบความถูกต้องของฟอร์มทั้งหมด
+            // และหาช่องข้อมูลที่ "ไม่ถูกต้อง" (invalid) เป็นช่องแรก
+            const firstInvalidField = form.querySelector(':invalid');
+
+            if (firstInvalidField) {
+                // ถ้าเจอช่องที่กรอกไม่ครบหรือไม่ถูกต้อง
+                // ให้เลื่อนหน้าจอไปหาช่องนั้นๆ และ focus
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstInvalidField.focus();
+            } else {
+                // ถ้าฟอร์มถูกต้องทั้งหมด ให้ดำเนินการส่งข้อมูล
+                loadingOverlay.style.display = 'flex';
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                data.action = 'register';
+                
+                const timestamp = Date.now();
+                const referenceId = `EDU${timestamp}`;
+                data.referenceId = referenceId;
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(res => {
+                    loadingOverlay.style.display = 'none';
+                    form.style.display = 'none';
+                    resultDiv.style.display = 'block';
+
+                    if (res.success) {
+                        resultDiv.innerHTML = `
+                            <h3>ลงทะเบียนสำเร็จ!</h3>
+                            <p>รหัสอ้างอิงการสมัครของคุณคือ:</p>
+                            <h2 class="ref-id">${referenceId}</h2>
+                            <p><strong>กรุณาแคปหน้าจอหรือจดรหัสนี้ไว้</strong> เพื่อใช้ในการเข้าสู่ระบบตอบคำถาม</p>
+                            <a href="login.html" class="btn">ไปที่หน้าตอบคำถาม</a>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `
+                            <h3>เกิดข้อผิดพลาด</h3>
+                            <p>${res.error || 'ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง'}</p>
+                            <button onclick="location.reload()" class="btn btn-secondary">ลองอีกครั้ง</button>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    loadingOverlay.style.display = 'none';
+                    form.style.display = 'none';
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `
+                        <h3>เกิดข้อผิดพลาด</h3>
+                        <p>การเชื่อมต่อล้มเหลว: ${error.message}</p>
+                        <button onclick="location.reload()" class="btn btn-secondary">ลองอีกครั้ง</button>
+                    `;
+                });
+            }
+            // --- END: โค้ดส่วนที่แก้ไข ---
+        });
+    </script>
+</body>
+</html>

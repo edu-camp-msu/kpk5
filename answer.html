@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตอบคำถาม - EDU CAMP MSU ครั้งที่ 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="omltjNeeb_aJZQLtdr88TzyDt9z5xERXYj55BZiRF4U" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>ตอบคำถามเพื่อการคัดเลือก</h1>
+                <h2 id="welcomeMessage">สวัสดี, กำลังโหลดข้อมูล...</h2>
+            </div>
+            <button type="button" id="logoutButton" class="btn btn-secondary btn-logout">ออกจากระบบ</button>
+        </header>
+
+        <form id="answerForm" class="card">
+            
+            <!-- Section: Written Questions -->
+            <section id="written-questions">
+                <h3>การตอบคำถามเพื่อคัดเลือกน้องค่ายคนพันธุ์ครู EDU CAMP ครั้งที่ 5</h3>
+
+                <div class="question-block">
+                    <label for="question1">
+                        <p><strong>คำถามที่ 1:</strong> “จากภาพยนตร์เรื่อง Encanto เราจะเห็นว่าสมาชิกในครอบครัวของ Madrigal ได้รับ “พรสวรรค์” ที่แตกต่างกัน สิ่งนี้เปรียบเสมือนห้องเรียนในยุคปัจจุบัน ที่นักเรียนแต่ละคนมีความพร้อมในการเข้าถึงเทคโนโลยีและ ปัญญาประดิษฐ์ (AI) ไม่เท่ากัน บางคนอาจมีเครื่องมือและอินเทอร์เน็ตความเร็วสูงเปรียบเหมือน “พรสวรรค์” ของอิซาเบลลา ในขณะที่บางคนอาจมีข้อจำกัดมากมาย เปรียบได้กับมิราเบลที่รู้สึกว่าตนเองแตกต่างและขาดโอกาส</p>
+                        <p>ในฐานะที่น้องเป็นครูผู้ดูแลบ้าน Madrigal หลังนี้ <strong>คุณจะนำเทคโนโลยีและ AI เข้ามาใช้ในการจัดการเรียนรู้อย่างไร</strong> ที่จะไม่ทำให้ “มิราเบล” (ผู้มีข้อจำกัด) รู้สึกถูกทอดทิ้ง แต่กลับดึงศักยภาพของเธอออกมาได้ และในขณะเดียวกัน ก็ส่งเสริมให้เด็กที่มี “พรสวรรค์” (ผู้มีความพร้อม) ได้พัฒนาไปอย่างเต็มที่ โดยที่ทุกคนยังคงเรียนรู้และเติบโตไปพร้อมกันได้อย่างมีความสุข"</p>
+                    </label>
+                    <textarea id="question1" name="question1" rows="10" required placeholder="พิมพ์คำตอบของคุณที่นี่..."></textarea>
+                </div>
+                
+                <div class="question-block">
+                    <label for="question2">
+                        <p><strong>คำถามที่ 2:</strong> “ในภาพยนตร์เรื่อง Encanto “อาบัวเอลา” เปรียบเสมือนครูผู้มีภารกิจในการปกป้องปาฏิหาริย์ (The Miracle) ซึ่งเป็นหัวใจสำคัญที่ทำให้บ้านและครอบครัวมีพลังพิเศษ แต่ในขณะเดียวกัน แรงกดดันและความคาดหวังของเธอกลับสร้างรอยร้าวให้เกิดขึ้นกับบ้านโดยไม่รู้ตัว</p>
+                        <p>หากเปรียบวิชาชีพครูเป็นดั่งการดูแลบ้านมหัศจรรย์หลังนี้… สำหรับตัวน้องเอง <strong>น้องคิดว่าอะไรคือ “ปาฏิหาริย์” หรือ “หัวใจสำคัญ”</strong> ที่ทำให้วิชาชีพครูยังคงมีความหมายและเป็นพลังในการสร้างคน และในทางกลับกัน <strong>อะไรคือ “รอยร้าว” หรือ “ความท้าทายที่ยิ่งใหญ่ที่สุด”</strong> ที่อาจบั่นทอนปาฏิหาริย์นั้นได้ และในฐานะครูรุ่นใหม่ <strong>น้องจะมีวิธีรับมือกับความท้าทายนี้อย่างไร</strong> เพื่อรักษาคุณค่าของวิชาชีพและประคับประคอง “บ้าน” ของเราไม่ให้พังทลายลง”</p>
+                    </label>
+                    <textarea id="question2" name="question2" rows="10" required placeholder="พิมพ์คำตอบของคุณที่นี่..."></textarea>
+                </div>
+            </section>
+
+            <!-- Section: Video Submission -->
+            <section id="video-submission">
+                <h3>โจทย์การคัดเลือก วิดีโอแสดงทัศนคติ (ความยาวไม่เกิน 3 นาที)</h3>
+                <p>เพื่อทำความรู้จักตัวตนและมุมมองของน้อง ๆ มากขึ้น ขอให้สร้างสรรค์คลิปวิดีโอเพื่อแนะนำตัวเอง และตอบคำถามตามหัวข้อต่อไปนี้</p>
+                
+                <h4>องค์ประกอบในวิดีโอ</h4>
+                <ul class="styled-list video-guide">
+                    <li><strong>แนะนำตัว:</strong> บอกให้เรารู้จักตัวตนของคุณ</li>
+                    <li><strong>เหตุผลที่อยากเข้าร่วม:</strong> บอกเล่าถึงแรงบันดาลใจที่ทำให้น้องอยากมาเป็นส่วนหนึ่งของ "ค่ายคนพันธุ์ครู"</li>
+                    <li><strong>ตอบคำถามหลัก:</strong>
+                        <blockquote>“ในช่วงต้นเรื่อง Encanto มิราเบล ออกเดินทางโดยมีความรู้สึกว่าตนเองธรรมดาและแตกต่างจากคนอื่นในครอบครัว เธอคาดหวังว่าการเดินทางครั้งนี้จะช่วยให้เธอได้ค้นพบคุณค่าหรือพรสวรรค์ ที่ซ่อนอยู่ในตัวเอง หากเปรียบ “ค่ายคนพันธุ์ครู” เป็นการเดินทางครั้งสำคัญของน้อง… เมื่อการเดินทางในค่ายสิ้นสุดลงในวันสุดท้าย น้องคาดหวังว่าจะได้ค้นพบ “พรสวรรค์ในแบบของมิราเบล” ซึ่งอาจไม่ใช่พลังพิเศษที่จับต้องได้ แต่เป็นความเข้าใจในตัวเอง, การมองเห็นคุณค่าในผูอื่น, หรือการค้นพบหัวใจของความเป็นครูในแบบฉบับของตนเอง... อย่างไรบ้าง และการเปลี่ยนแปลง ที่น้องอยากเห็นในตัวเอง รวมถึงบทเรียนที่ล้ำค่าที่สุด ที่คาดว่าจะได้นำติดตัวกลับไปจากการเดินทางในค่ายครั้งนี้”</blockquote>
+                    </li>
+                </ul>
+
+<h4>ขั้นตอนการส่ง</h4>
+<ol class="styled-list steps">
+    <li>อัปโหลดคลิปวิดีโอลงใน YouTube ของตนเอง</li>
+    <li>ตั้งค่าความเป็นส่วนตัวของคลิปให้เป็น <strong>"เฉพาะผู้มีลิงก์" (Unlisted)</strong></li>
+    <li>คัดลอกลิงก์วิดีโอ และนำมาวางในช่องที่กำหนดของใบสมัคร</li>
+    <li>หากส่งโดย <strong>Google Drive</strong>  
+        ให้ตั้งค่าลิงก์เป็น <strong>"ทุกคนที่มีลิงก์"</strong> และสิทธิ์เป็น <strong>"ผู้มีสิทธิ์อ่าน"</strong>  
+        รวมทั้งแนะนำให้<strong>ลองสลับบัญชีอีเมล แล้วเปิดลิงก์ดู</strong> เพื่อยืนยันว่าสามารถเข้าถึงได้จริง จากนั้นคัดลอกลิงก์มาใส่ในช่องที่กำหนดของใบสมัคร
+    </li>
+</ol>
+
+
+                <p class="closing-remark">ทางค่ายรอชมคลิปที่เต็มไปด้วยพลังและความคิดสร้างสรรค์ของน้องๆ อยู่นะครับ</p>
+
+                <div class="form-group">
+    <label for="videoLink"><strong>ลิงก์วิดีโอ (YouTube หรือ Google Drive)</strong></label>
+                    <input type="url" id="videoLink" name="videoLink" placeholder="https://..." required>
+                </div>
+            </section>
+            
+            <div class="button-group-center">
+                 <button type="submit" class="btn btn-full">บันทึกคำตอบ</button>
+            </div>
+        </form>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>กำลังโหลดข้อมูล...</p>
+        </div>
+        
+        <div id="result" style="display: none;"></div>
+    </div>
+
+    <script>
+    const user = JSON.parse(localStorage.getItem('eduCampUser'));
+    if (!user || !user.token || !user.fullName) {
+        window.location.href = 'login.html';
+    }
+
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const answerForm = document.getElementById('answerForm');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const resultDiv = document.getElementById('result');
+    const logoutButton = document.getElementById('logoutButton');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3ujgKEQ-eT1wgCDkkV_9KQGEaHo9K4tm6kbIscrrAmBWiidQ_fMqFWd9n4PEY8IPk/exec';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        welcomeMessage.textContent = `สวัสดี, น้อง${user.fullName}`;
+        loadAnswers(); // Load existing answers
+    });
+
+    function loadAnswers() {
+        loadingOverlay.style.display = 'flex';
+        fetch(`${scriptURL}?action=getAnswers&token=${user.token}`)
+        .then(response => response.json())
+        .then(res => {
+            loadingOverlay.style.display = 'none';
+            if (res.success && res.data) {
+                document.getElementById('question1').value = res.data.question1 || '';
+                document.getElementById('question2').value = res.data.question2 || '';
+                document.getElementById('videoLink').value = res.data.videoLink || '';
+            } else if (!res.success) {
+                alert(res.error || 'เกิดข้อผิดพลาดในการดึงข้อมูล');
+                logout();
+            }
+        })
+        .catch(error => {
+            loadingOverlay.style.display = 'none';
+            console.error('Error loading answers:', error);
+        });
+    }
+    
+    answerForm.addEventListener('submit', e => {
+        e.preventDefault();
+        loadingOverlay.style.display = 'flex';
+        
+        const formData = new FormData(answerForm);
+        const data = Object.fromEntries(formData.entries());
+        data.action = 'saveAnswers';
+        data.token = user.token;
+
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(res => {
+            loadingOverlay.style.display = 'none';
+            resultDiv.style.display = 'block';
+            answerForm.style.display = 'none';
+            document.querySelector('header').style.display = 'none';
+            
+             if (res.success) {
+                resultDiv.innerHTML = `
+                    <div class="card result-card result-success">
+                        <h3>บันทึกคำตอบสำเร็จ!</h3>
+                        <p>คุณสามารถกลับมาแก้ไขคำตอบได้ตลอดจนกว่าจะหมดเขต</p>
+                        <div class="button-group">
+                           <button onclick="location.reload()" class="btn">แก้ไขคำตอบอีกครั้ง</button>
+                           <button onclick="logout()" class="btn btn-secondary">ออกจากระบบ</button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="card result-card result-error">
+                        <h3>เกิดข้อผิดพลาด</h3>
+                        <p>${res.error || 'ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่'}</p>
+                        <button onclick="location.reload()" class="btn btn-secondary">ลองอีกครั้ง</button>
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            loadingOverlay.style.display = 'none';
+            resultDiv.innerHTML = `
+                <div class="card result-card result-error">
+                    <h3>เกิดข้อผิดพลาด</h3>
+                    <p>การเชื่อมต่อล้มเหลว: ${error.message}</p>
+                    <button onclick="location.reload()" class="btn btn-secondary">ลองอีกครั้ง</button>
+                </div>
+            `;
+        });
+    });
+
+    function logout() {
+        localStorage.removeItem('eduCampUser');
+        window.location.href = 'index.html';
+    }
+
+    logoutButton.addEventListener('click', logout);
+</script>
+</body>
+</html>
