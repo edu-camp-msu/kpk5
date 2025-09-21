@@ -131,7 +131,12 @@
         .size-chart-table tbody tr:nth-child(even) {
             background-color: rgba(240, 240, 240, 0.5);
         }
-        /* === END NEW TABLE STYLE === */
+        .table-responsive-wrapper {
+    overflow-x: auto; /* ทำให้เกิด scrollbar แนวนอนเมื่อเนื้อหาล้น */
+    -webkit-overflow-scrolling: touch; /* เพื่อให้ scroll ลื่นบน iOS */
+    border-radius: 8px; /* ทำให้มุมโค้งมนสวยงาม */
+    border: 1px solid var(--border-gray); /* เพิ่มเส้นขอบให้เหมือนกับ input อื่นๆ */
+}
 
         .payment-info {
             background-color: #fff3e0;
@@ -233,7 +238,7 @@
                     <div class="form-group full-width">
                          <label for="shirtSize">ไซต์เสื้อ</label>
                          
-                         <!-- === REPLACED IMAGE WITH TABLE HERE === -->
+                     <div class="table-responsive-wrapper">
                          <table class="size-chart-table">
                             <thead>
                                 <tr>
@@ -279,7 +284,7 @@
                                 </tr>
                             </tbody>
                          </table>
-                         <!-- === END OF TABLE === -->
+                    </div>
 
                          <select id="shirtSize" name="shirtSize" required>
                             <option value="" disabled selected>กรุณาเลือก</option>
@@ -291,6 +296,8 @@
                             <option value="2XL">2XL</option>
                             <option value="3XL">3XL</option>
                             <option value="4XL">4XL</option>
+                            <option value="5XL">5XL</option>
+                            <option value="6XL">6XL</option>
                          </select>
                     </div>
                 </div>
@@ -509,4 +516,5 @@
     </script>
 </body>
 </html>
+
 
