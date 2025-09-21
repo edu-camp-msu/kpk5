@@ -131,12 +131,7 @@
         .size-chart-table tbody tr:nth-child(even) {
             background-color: rgba(240, 240, 240, 0.5);
         }
-        .table-responsive-wrapper {
-    overflow-x: auto; /* ทำให้เกิด scrollbar แนวนอนเมื่อเนื้อหาล้น */
-    -webkit-overflow-scrolling: touch; /* เพื่อให้ scroll ลื่นบน iOS */
-    border-radius: 8px; /* ทำให้มุมโค้งมนสวยงาม */
-    border: 1px solid var(--border-gray); /* เพิ่มเส้นขอบให้เหมือนกับ input อื่นๆ */
-}
+        /* === END NEW TABLE STYLE === */
 
         .payment-info {
             background-color: #fff3e0;
@@ -238,7 +233,7 @@
                     <div class="form-group full-width">
                          <label for="shirtSize">ไซต์เสื้อ</label>
                          
-                     <div class="table-responsive-wrapper">
+                         <!-- === REPLACED IMAGE WITH TABLE HERE === -->
                          <table class="size-chart-table">
                             <thead>
                                 <tr>
@@ -251,8 +246,6 @@
                                     <th>2XL</th>
                                     <th>3XL</th>
                                     <th>4XL</th>
-                                   <th>5XL</th>
-                                    <th>6XL</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -266,8 +259,6 @@
                                     <td>46</td>
                                     <td>48</td>
                                     <td>50</td>
-                                    <td>52</td>
-                                    <td>54</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ความยาว</strong></td>
@@ -279,12 +270,10 @@
                                     <td>31</td>
                                     <td>31</td>
                                     <td>32</td>
-                                    <td>33</td>
-                                    <td>34</td>
                                 </tr>
                             </tbody>
                          </table>
-                    </div>
+                         <!-- === END OF TABLE === -->
 
                          <select id="shirtSize" name="shirtSize" required>
                             <option value="" disabled selected>กรุณาเลือก</option>
@@ -296,8 +285,6 @@
                             <option value="2XL">2XL</option>
                             <option value="3XL">3XL</option>
                             <option value="4XL">4XL</option>
-                            <option value="5XL">5XL</option>
-                            <option value="6XL">6XL</option>
                          </select>
                     </div>
                 </div>
@@ -516,5 +503,3 @@
     </script>
 </body>
 </html>
-
-
